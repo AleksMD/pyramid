@@ -1,0 +1,10 @@
+Pipfile*
+__pycache__/
+*.pyc
+.git
+.gitignore
+tests/
+.coverage
+.coveragerc
+.pytest_cache
+pyr_start.egg-info/

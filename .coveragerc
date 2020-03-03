@@ -1,0 +1,3 @@
+[run]
+source = pyr_start
+omit = pyr_start/test*

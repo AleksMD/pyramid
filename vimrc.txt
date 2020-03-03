@@ -1,0 +1,65 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plugin 'danilo-augusto/vim-afterglow'
+Plugin 'mattn/emmet-vim'
+call vundle#end()
+filetype plugin indent on
+"split navigations
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+let g:SimpylFold_docstring_preview=1
+let g:user_emmet_leader_key=','
+let NERDTreeShowHidden=1
+highlight BadWhitespace ctermbg=red guibg=darkred
+"au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+set encoding=utf-8
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+let python_highlight_all=1
+syntax on
+let g:airline_theme='afterglow'
+colorscheme afterglow
+if has('gui_running')
+  set background=dark
+  colorscheme afterglow
+"else
+"  colorscheme zenburn
+endif
+call togglebg#map("<F5>")
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="normal"
+"let g:ycm_python_binary_path ="python"
+let g:pymode_python = 'python3'
+set nu

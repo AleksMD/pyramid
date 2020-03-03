@@ -1,0 +1,25 @@
+version: "3"
+services:
+    broker:
+        image: "rabbitmq:3"
+        ports:
+            - 5672:5672
+
+    storage:
+        image: "redis:4"
+        ports:
+            - 6379:6379
+
+    web:
+        build: .
+        ports:
+            - 6543:6543
+        command: pserve development.ini --reload
+        depends_on:
+            - "broker"
+
+    worker:
+        build: .
+        command: celery -A pyr_start.tasks worker --loglevel=info
+        depends_on:
+            - "broker"
